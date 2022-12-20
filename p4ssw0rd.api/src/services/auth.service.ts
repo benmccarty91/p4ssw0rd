@@ -38,7 +38,9 @@ export class AuthService {
           userId: res.data.user_id,
         })),
         catchError((err) => {
-          console.error(err);
+          console.error(
+            `Axios error: ${JSON.stringify(err.response?.data?.error || err)}`
+          );
           return throwError(() => err);
         })
       );
