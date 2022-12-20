@@ -1,7 +1,7 @@
 import { Module } from '@nestjs/common';
 import { ConfigModule } from '@nestjs/config';
-import { GuardModule } from 'src/guards/_guard.module';
-import { ServiceModule } from 'src/services/_service.module';
+import { GuardModule } from '../guards/_guard.module';
+import { ServiceModule } from '../services/_service.module';
 import { HelloWorldController } from './helloworld.controller';
 
 @Module({

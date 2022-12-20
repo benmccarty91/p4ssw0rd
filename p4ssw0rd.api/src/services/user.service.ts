@@ -1,5 +1,5 @@
 import { Injectable, Scope } from "@nestjs/common";
-import { UserRepository } from "src/repositories/user.repository";
+import { UserRepository } from "../repositories/user.repository";
 
 @Injectable({ scope: Scope.REQUEST })
 export class UserService {

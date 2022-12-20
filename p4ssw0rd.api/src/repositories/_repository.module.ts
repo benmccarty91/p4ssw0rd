@@ -1,5 +1,5 @@
 import { Module } from '@nestjs/common';
-import { AdminModule } from 'src/admin/_admin.module';
+import { AdminModule } from '../admin/_admin.module';
 import { UserRepository } from './user.repository';
 
 @Module({

@@ -1,13 +1,12 @@
 import { Controller, Get, UseGuards } from '@nestjs/common';
-import { ConfigService } from '@nestjs/config';
-import { AuthGuard } from 'src/guards/auth.guard';
-import { Anonymous } from 'src/utils/decorators/anonymous.decorator';
+import { AuthGuard } from '../guards/auth.guard';
+import { Anonymous } from '../utils/decorators/anonymous.decorator';
 import { HelloWorldService } from '../services/app.service';
 
 @UseGuards(AuthGuard)
 @Controller()
 export class HelloWorldController {
-  constructor(private appService: HelloWorldService, private config: ConfigService) {}
+  constructor(private appService: HelloWorldService) {}
 
   @Get()
   @Anonymous()
