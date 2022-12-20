@@ -82,7 +82,7 @@ jobs:
           export_default_credentials: true
       - name: Deploy Docker image
         run: |
-          gcloud run deploy flikit-api \
+          gcloud run deploy p4ssw0rd-api \
             --image $IMAGE_NAME \
             --region us-west1 \
             --platform managed \
