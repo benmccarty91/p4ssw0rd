@@ -94,5 +94,5 @@ jobs:
             --cpu 1 \
             --timeout 20 \
             --concurrency 80 \
-            --allow-unauthenticated
+            --allow-unauthenticated \
             --set-env-vars [GOOGLE_API_KEY=${{secrets.GOOGLE_API_KEY}}]
