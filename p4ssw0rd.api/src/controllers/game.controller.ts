@@ -2,6 +2,7 @@ import {
   Controller,
   Get,
   InternalServerErrorException,
+  Param,
   Post,
   Query,
   UseGuards,
@@ -30,13 +31,26 @@ export class GameController {
 
   @Get("/")
   public get(): Observable<Game | object> {
-    return this.gameService.getGame().pipe(
+    return this.gameService.getUsersGame().pipe(
       map((game) => {
         if (!game) {
           return {};
         } else {
           return game;
         }
+      })
+    );
+  }
+
+  @Post("/join/:id")
+  public join(@Param() params): Observable<void> {
+    const gameId = params.id;
+    return this.gameService.joinGame(gameId).pipe(
+      map((res) => {
+        if (!res) {
+          throw new InternalServerErrorException("Failed to join game");
+        }
+        return;
       })
     );
   }

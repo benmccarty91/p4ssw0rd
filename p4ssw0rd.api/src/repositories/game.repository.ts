@@ -32,7 +32,7 @@ export class GameRepository {
     }
   }
 
-  public async getGame(userId: string): Promise<Game | false> {
+  public async getUsersGame(userId: string): Promise<Game | false> {
     const userDoc = await this.db.collection("users").doc(userId).get();
     const user = userDoc.data() as User;
     if (!user.activeGameId) {
@@ -44,6 +44,21 @@ export class GameRepository {
         .doc(user.activeGameId)
         .get();
       return gameDoc.data() as Game;
+    } catch (err) {
+      console.error(err);
+      return false;
+    }
+  }
+
+  public async getGame(gameId: string): Promise<Game> {
+    const gameRef = await this.db.collection("games").doc(gameId).get();
+    return gameRef.data() as Game;
+  }
+
+  public async saveGame(game: Game): Promise<boolean> {
+    try {
+      await this.db.collection("games").doc(game.id).set(game);
+      return true;
     } catch (err) {
       console.error(err);
       return false;

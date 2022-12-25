@@ -1,5 +1,5 @@
-import { Injectable, Scope, ServiceUnavailableException } from "@nestjs/common";
-import { from, map, Observable } from "rxjs";
+import { Injectable, Scope } from "@nestjs/common";
+import { from, Observable } from "rxjs";
 import { User } from "src/models/user.model";
 import { UserRepository } from "../repositories/user.repository";
 
@@ -22,6 +22,14 @@ export class UserService {
     const user: User = {
       userId: this.userId,
     };
-    return from(this.userRepository.newUser(user));
+    return from(this.userRepository.saveUser(user));
+  }
+
+  public getUser(): Observable<User> {
+    return from(this.userRepository.getUser(this.userId));
+  }
+
+  public saveUser(user: User): Observable<boolean> {
+    return from(this.userRepository.saveUser(user));
   }
 }

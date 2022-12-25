@@ -9,15 +9,18 @@ export class UserRepository {
     this.db = admin.Database;
   }
 
-  public newUser(user: User): Promise<boolean> {
-    return this.db
-      .collection("users")
-      .doc(user.userId)
-      .set(user)
-      .then((x) => true)
-      .catch((err) => {
-        console.error(err);
-        return false;
-      });
+  public async saveUser(user: User): Promise<boolean> {
+    try {
+      await this.db.collection("users").doc(user.userId).set(user);
+      return true;
+    } catch (err) {
+      console.error(err);
+      return false;
+    }
+  }
+
+  public async getUser(userId: string): Promise<User> {
+    const userRef = await this.db.collection("users").doc(userId).get();
+    return userRef.data() as User;
   }
 }
