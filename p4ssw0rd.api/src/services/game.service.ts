@@ -28,7 +28,10 @@ export class GameService {
             ownerId: userId,
             gameStatus: GameStatus.NOT_STARTED,
             rounds: [],
-            teams: [{ players: [playerFromUser(user)], score: 0 }],
+            teams: [
+              { players: [playerFromUser(user)], score: 0 },
+              { players: [], score: 0 },
+            ],
             stagedPlayers: [],
           },
           forceCreate

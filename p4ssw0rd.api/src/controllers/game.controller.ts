@@ -43,7 +43,7 @@ export class GameController {
   }
 
   @Post("/join/:id")
-  public join(@Param() params): Observable<void> {
+  public join(@Param() params: { id: string }): Observable<void> {
     const gameId = params.id;
     return this.gameService.joinGame(gameId).pipe(
       map((res) => {
