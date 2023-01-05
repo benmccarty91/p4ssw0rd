@@ -1,14 +1,13 @@
 import { User } from "./user.model";
+import { SpentWords } from "./word.model";
 
 export class Game {
   id: string;
   ownerId: string;
   gameStatus: GameStatus;
-  rounds: Round[];
   teams: Team[];
-  currentRound?: number; //index of rounds array
-  winningTeam?: number; //index of teams array
   stagedPlayers: Player[];
+  spentWords: SpentWords;
 }
 
 export class Player {
@@ -29,8 +28,11 @@ export class Team {
 }
 
 export class Round {
+  roundId: string;
   timer: number;
-  startingPlayer: string;
+  players: Player[];
+  wordPool: string[];
+  category: string;
 }
 
 export enum GameStatus {

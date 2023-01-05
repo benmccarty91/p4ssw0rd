@@ -5,6 +5,7 @@ import { ServiceModule } from "../services/_service.module";
 import { AuthController } from "./auth.controller";
 import { GameController } from "./game.controller";
 import { HelloWorldController } from "./helloworld.controller";
+import { RoundController } from "./round.controller";
 import { TeamController } from "./team.controller";
 
 @Module({
@@ -13,6 +14,7 @@ import { TeamController } from "./team.controller";
     AuthController,
     GameController,
     TeamController,
+    RoundController,
   ],
   exports: [],
   imports: [ServiceModule, GuardModule, ConfigModule],
